@@ -1,0 +1,76 @@
+@import "colors";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: Arial;
+  min-width: 520px;
+}
+
+.page {
+  display: flex;
+  padding: 20px 30px;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: $bg-color;
+  
+  &--hover {
+    background-color: $br-color--hover;
+  }
+}
+
+.cards {
+  position: relative;
+  height: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 100%;
+  background-color: white;
+
+  &:last-of-type {
+    position: relative;
+    margin-left: 60px;
+    box-shadow: -6px 0 5px -1px rgba(0, 0, 0, 0.1);
+
+    &.card--wide {
+      width: calc(100vw - 120px);
+      max-width: 960px;
+      min-width: 400px;
+    }
+  }
+
+  &:only-of-type {
+    margin-left: 0;
+  }
+
+  &__circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    border: 5px solid #000000;
+    border-radius: 50%;
+  }
+
+  &__index {
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: bold;
+  }
+}
