@@ -5,7 +5,7 @@ export default class View {
     const handlebarsTemplate = this._getHandlebarsTemplate();
     this.compiledTemplate = Handlebars.compile(handlebarsTemplate);
     this.shoudUpdateElement = true;
-    this.shownCardsNumber = 2;
+    this.shownCardsNumber = 2; // Количество карточек которые будут отрисованы (на экране видим только 2 верхние)
   }
 
   get element() {
