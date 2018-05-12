@@ -18,17 +18,17 @@ body {
   height: 100%;
   box-sizing: border-box;
   background-color: $bg-color;
-  
-  &--hover {
+
+  &:hover:not(.cancel-highlight) {
     background-color: $br-color--hover;
   }
 }
 
 .cards {
   position: relative;
+  min-width: 400px;
   height: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background-color: white;
 }
 
 .card {
