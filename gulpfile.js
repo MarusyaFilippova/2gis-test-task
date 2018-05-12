@@ -11,9 +11,7 @@ const minify = require('gulp-csso');
 const rename = require('gulp-rename');
 const rollup = require('gulp-better-rollup');
 const sourcemaps = require('gulp-sourcemaps');
-const mocha = require('gulp-mocha');
 const resolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
 const babel = require('rollup-plugin-babel');
 const uglify = require('gulp-uglify');
 
@@ -45,11 +43,9 @@ gulp.task('scripts', function () {
     .pipe(sourcemaps.init())
     .pipe(rollup({
       plugins: [
-        resolve({browser: true}),
-        commonjs(),
+        resolve(),
         babel({
           babelrc: false,
-          exclude: 'node_modules/**',
           presets: [
             ['env', {modules: false}]
           ],
@@ -62,15 +58,6 @@ gulp.task('scripts', function () {
     .pipe(uglify())
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('build/js'));
-});
-
-gulp.task('test', function () {
-  return gulp
-    .src(['js/**/*.test.js'], { read: false })
-    .pipe(mocha({
-      compilers: ['js:babel-register'],
-      reporter: 'spec'
-    }));
 });
 
 gulp.task('copy-html', function () {
@@ -92,7 +79,7 @@ gulp.task('js-watch', ['scripts'], function (done) {
 
 gulp.task('serve', ['build'], function () {
   server.init({
-    server: './build',
+    server: ['./build', './data'],
     notify: false,
     open: true,
     port: 3500,
